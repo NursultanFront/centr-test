@@ -1,12 +1,16 @@
 <template>
   <div ref="selectRef" class="wrapper">
-    <div class="select"></div>
+    <div class="select" :class="{ select_expanded: isExpanded }" @click="onToggleOptionListVisibility">
+      <div>9</div>
+      <ArrowDowm class="select__arrow-icon" :class="{ 'select__arrow-icon_up': isExpanded }" />
+    </div>
     <div v-if="isExpanded" class="options"></div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onClickOutside } from '@vueuse/core';
+import ArrowDowm from '@/assets/images/svg/chevron_down.svg?component';
 
 const isExpanded = ref<boolean>(false);
 const selectRef = ref<HTMLDivElement>();
@@ -20,13 +24,59 @@ onMounted(() => {
     isExpanded.value = false;
   });
 });
+
+const onToggleOptionListVisibility = () => (isExpanded.value = !isExpanded.value);
 </script>
 
 <style scoped lang="scss">
 .wrapper {
   position: relative;
+  width: 85px;
+  height: 42px;
+}
+
+.select {
+  @include padding(9px, 16px);
+  display: flex;
+  align-items: center;
+  gap: px-to-rem(16px);
+
+  @include rounded-border(8px);
+  border: 1px solid var(--text-line-gray, #e4e4e4);
+
+  &_expanded {
+  }
+
+  &__arrow-icon {
+    margin-left: auto;
+    width: px-to-rem(24px);
+    height: px-to-rem(24px);
+    stroke: var(--vkd-black-900);
+
+    @include transition(transform);
+
+    &_up {
+      transform: rotate(180deg);
+    }
+  }
 }
 .options {
   position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 3;
+
+  @include padding(9px, 16px);
+  display: flex;
+  align-items: center;
+  gap: px-to-rem(16px);
+
+  @include rounded-border(8px);
+  border: 1px solid var(--text-line-gray, #e4e4e4);
+
+  min-height: fit-content;
+  max-height: px-to-rem(250px);
+  overflow: auto;
+  content-visibility: auto;
 }
 </style>

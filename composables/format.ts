@@ -1,6 +1,4 @@
 import { DateTime } from 'luxon';
-import { BookingData } from '@/types/rest';
-import { useCommonStore, IEnumList } from '~/stores/common';
 
 export enum BookingStatuses {
   New = 'Ожидание',
@@ -21,8 +19,6 @@ const CurrencyFormatter = new Intl.NumberFormat('ru', {
 });
 
 export const useFormat = () => {
-  const commonStore = useCommonStore();
-
   const makeFullname = (firstname?: string, surname?: string, lastname?: string) => {
     const fullname: string[] = [];
 
@@ -43,16 +39,6 @@ export const useFormat = () => {
 
   const formatPhone = (phone?: string) => {
     return phone ? phone.replace(/^(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/g, '+$1 ($2) $3-$4-$5') : null;
-  };
-
-  type EnumKey = keyof IEnumList;
-
-  const convertEnumKeyToValue = (key: EnumKey, value?: string | number | null) => {
-    if (value === null || value === undefined) return null;
-
-    const values = commonStore.enums[key];
-
-    return Array.isArray(values) ? values[value as number] : values[value];
   };
 
   const formatDate = (date: string, format = 'dd.MM.yyyy HH:mm') => {
@@ -104,69 +90,19 @@ export const useFormat = () => {
 
   const formatCurrency = (value: number | string) => CurrencyFormatter.format(+value);
 
-  // DEPRECATED!
-  // TODO: использовать алтернативные методы
-  const setBookingStatus = (data: BookingData) => {
-    const currentDate = new Date();
-    const dateIn = new Date(data.dateIn);
-    const dateOut = new Date(data.dateOut);
-
-    switch (data.status) {
-      case 0:
-        return BookingStatuses.New;
-      case 1:
-        if (dateIn <= currentDate && dateOut >= currentDate) {
-          return BookingStatuses.Live;
-        }
-        return BookingStatuses.Confirmed;
-      case 2:
-        return BookingStatuses.Canceled;
-      case 3:
-        return BookingStatuses.Completed;
-      default:
-        return BookingStatuses.Unknown;
-    }
-  };
-
-  const convertBookingStatusToKey = (
-    status: BookingStatus,
-    options?: {
-      dateIn: DateTime;
-      dateOut: DateTime;
-    },
-  ) => {
-    const now = DateTime.now();
-
-    switch (status) {
-      case BookingStatus.Created:
-        return 'pending';
-      case BookingStatus.Living:
-      case BookingStatus.Confirmed: {
-        const isLiving = typeof options === 'object' && now >= options?.dateIn && now <= options?.dateOut;
-
-        return isLiving ? 'living' : 'reserved';
-      }
-      default:
-        return 'unknow';
-    }
-  };
-
   return {
     makeFullname,
     formatPhone,
-    convertEnumKeyToValue,
     formatDate,
     formatJSDate,
     formatISODate,
     formatCurrency,
     pluralize,
     formattedDateRange,
-    setBookingStatus,
     isoToSqlFormat,
     calculateClientCommission,
     calculateCommissionAmount,
     getIntervalDaysCount,
     formatDateShort,
-    convertBookingStatusToKey,
   };
 };
