@@ -27,20 +27,14 @@
         @focusout="(e) => emit('focusout', e)"
         @blur="(e) => emit('blur', e)"
       />
-      <UiLoader v-if="props.isLoading" class="input__right-icon" />
-      <slot v-else-if="!rightIconDisabled" name="right-icon">
-        <SuccessIcon v-if="isInputValidated" class="input__right-icon input__right-icon_success" />
-        <template v-else-if="isTogglePasswordIconVisible">
-          <HidePasswordIcon
+      <slot v-if="!rightIconDisabled" name="right-icon">
+        <template v-if="isTogglePasswordIconVisible">
+          <EyeIcon
             v-if="isPasswordVisible"
             class="input__right-icon input__right-icon_clear"
             @click="onTogglePasswordVisibility"
           />
-          <ShowPasswordIcon
-            v-else
-            class="input__right-icon input__right-icon_clear"
-            @click="onTogglePasswordVisibility"
-          />
+          <EyeIcon v-else class="input__right-icon input__right-icon_clear" @click="onTogglePasswordVisibility" />
         </template>
         <RemoveIcon
           v-else-if="isCleanIconVisible"
@@ -68,10 +62,7 @@
 <script setup lang="ts">
 import { Mask } from 'maska';
 
-import SuccessIcon from '@/assets/images/svg/icons/ok.svg?component';
-import RemoveIcon from '@/assets/images/svg/icons/close.svg?component';
-import ShowPasswordIcon from '@/assets/images/svg/icons/eye.svg?component';
-import HidePasswordIcon from '@/assets/images/svg/icons/eye-closed.svg?component';
+import EyeIcon from '@/assets/images/svg/eye.svg?component';
 
 type InputVariant = 'default' | 'warning';
 type InputType = 'text' | 'password' | 'email' | 'tel';
@@ -194,11 +185,11 @@ const onChange = (event: Event) => props.modelModifiers.lazy && handleChangeEven
   background-color: $white-main;
 
   @include transition(color border-color);
-  @include border(1px, var(--vkd-gray-900));
-  @include rounded-border;
+  @include border(1px, var(--text-line-gray));
+  @include rounded-border(10px);
 
   &:focus-within {
-    border-color: var(--vkd-black-900);
+    border-color: var(--secondary-blue);
   }
 
   &_error {

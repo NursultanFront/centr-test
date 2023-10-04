@@ -1,5 +1,3 @@
 <template>
-  <div>
-    <UiPagintaionChoice />
-  </div>
+  <NuxtPage />
 </template>

@@ -37,6 +37,27 @@ $themes: (
     // original name: green
     green-main: #52b788,
     green-light: #68d0a0,
+
+    // primary
+    primary-red: #d90e32,
+    primary-dark-red: #a60933,
+    primary-dark: #282828,
+    primary-light-grey: #f3f6f8,
+
+    // text-black
+    text-black: #293148,
+    text-dark-grey: rgba(41, 49, 72, 0.8),
+    text-grey: rgba(41, 49, 72, 0.6),
+    text-light-grey: rgba(41, 49, 72, 0.45),
+    text-line-gray: #e4e4e4,
+    text-white-45: rgba(255, 255, 255, 0.45),
+    text-white-20: rgba(255, 255, 255, 0.2),
+    // secondary
+    secondary-dark-red: #59051c,
+    secondary-light-red: #e86e84,
+    secondary-blue: #7895ff,
+    secondary-green: #7fc75e,
+    secondary-grey: #ededed,
   ),
   // TODO: light theme colors
   light:
@@ -82,7 +103,7 @@ $themes: (
 
 @mixin spread-theme-variables($theme: 'dark') {
   @each $color, $value in map-get($themes, $theme) {
-    --vkd-#{$color}: #{$value};
+    --#{$color}: #{$value};
   }
 }
 

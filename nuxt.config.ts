@@ -22,7 +22,19 @@ export default defineNuxtConfig({
       },
     },
   },
-  modules: ['@nuxtjs/eslint-module', '@pinia/nuxt', '@nuxtjs/device'],
+  modules: [
+    '@nuxtjs/eslint-module',
+    '@pinia/nuxt',
+    '@nuxtjs/device',
+    [
+      '@nuxtjs/google-fonts',
+      {
+        families: {
+          'DM Sans': [100, 300, 400, 500, 600, 700, 800, 900],
+        },
+      },
+    ],
+  ],
   pinia: {
     autoImports: ['defineStore', 'definePiniaStore', 'storeToRefs'],
   },
