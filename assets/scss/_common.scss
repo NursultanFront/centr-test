@@ -1,0 +1,145 @@
+html,
+body,
+input,
+textarea,
+button {
+  font-family: 'Vela Sans';
+}
+
+html,
+body,
+#__nuxt,
+.layout {
+  height: 100vh;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Raleway';
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 800;
+}
+
+h5,
+h6 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: px-to-rem(32px);
+}
+
+h2 {
+  font-size: px-to-rem(28px);
+}
+
+h3 {
+  font-size: px-to-rem(24px);
+}
+
+h4 {
+  font-size: px-to-rem(22px);
+}
+
+h5 {
+  font-size: px-to-rem(20px);
+}
+
+h6 {
+  font-size: px-to-rem(18px);
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.text-1,
+.text-2,
+.text-3,
+.text-caption {
+  font-family: 'Vela Sans';
+}
+
+.text-1 {
+  font-size: 18px;
+}
+
+.text-2 {
+  font-size: 16px;
+}
+
+.text-3 {
+  font-size: 14px;
+}
+
+.text-extra-bold {
+  font-weight: 800;
+}
+
+.text-bold,
+.text-caption-3 {
+  font-weight: 700;
+}
+
+.text-semi-bold,
+.text-caption-2 {
+  font-weight: 600;
+}
+
+.text-medium,
+.text-caption-1 {
+  font-weight: 500;
+}
+
+.text-caption-1,
+.text-caption-2,
+.text-caption-3 {
+  font-size: px-to-rem(12px);
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a,
+.link {
+  color: var(--vkd-black-900);
+  font-size: px-to-rem(16px);
+  font-weight: 800;
+  text-decoration: underline;
+
+  &:visited {
+    color: var(--vkd-black-500);
+  }
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.w-100 {
+  width: 100%;
+}
