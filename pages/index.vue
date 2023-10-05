@@ -13,6 +13,7 @@
       <UiCarDetails />
     </div>
     <UiAvatar />
+    <UiChoiceLang />
   </div>
 </template>
 

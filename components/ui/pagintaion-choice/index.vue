@@ -1,6 +1,6 @@
 <template>
   <div ref="selectRef" class="wrapper">
-    <div class="select" :class="{ select_expanded: isExpanded }" @click="onToggleOptionListVisibility">
+    <div class="select" @click="onToggleOptionListVisibility">
       <div>9</div>
       <ArrowDowm class="select__arrow-icon" :class="{ 'select__arrow-icon_up': isExpanded }" />
     </div>
@@ -43,9 +43,6 @@ const onToggleOptionListVisibility = () => (isExpanded.value = !isExpanded.value
 
   @include rounded-border(8px);
   border: 1px solid var(--text-line-gray, #e4e4e4);
-
-  &_expanded {
-  }
 
   &__arrow-icon {
     margin-left: auto;
