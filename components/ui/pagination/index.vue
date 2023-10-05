@@ -19,60 +19,20 @@
 import ArrowLeftIcon from '@/assets/images/svg/chevron_left.svg?component';
 import ArrowRightIcon from '@/assets/images/svg/chevron_right.svg?component';
 interface IProps {
-  perPageList?: number[];
   currentPage: number;
-  perPage?: number;
   lastPage: number;
 }
 
 const props = withDefaults(defineProps<IProps>(), {
-  perPage: 10,
   currentPage: 1,
   lastPage: 1,
 });
 const emit = defineEmits<{
-  (event: 'onPerPageChange', perPage: number): void;
   (event: 'onPageChange', page: number): void;
-  (event: 'onChange', page: number, perPage: number): void;
 }>();
-
-const changePerPage = (perPage: number) => {
-  // TODO: deprecated, use onChange event
-  emit('onPerPageChange', perPage);
-
-  emit('onChange', 1, perPage);
-};
-const changePage = (page: number) => {
-  // TODO: deprecated, use onChange event
-  emit('onPageChange', page);
-
-  emit('onChange', page, props.perPage);
-};
 
 const goForward = () => emit('onPageChange', props.currentPage + 1);
 const goBack = () => emit('onPageChange', props.currentPage - 1);
-
-const getPerPageVariant = (perPage: number) => {
-  const isSelected = props.perPage === perPage;
-
-  return isSelected ? 'primary' : 'secondary';
-};
-
-const getPageVariant = (page: number) => {
-  const isSelected = props.currentPage === page;
-
-  return isSelected ? 'primary' : 'secondary';
-};
-
-const pageList = computed(() => {
-  const currentPage = props.currentPage;
-  const lastPage = props.lastPage;
-
-  const pages = new Array(lastPage).fill(0).map((_, index) => index + 1);
-  const pageFrame = pages.slice(Math.max(currentPage - 3, 0), Math.min(currentPage + 3, lastPage));
-
-  return pageFrame;
-});
 
 const isFirstPage = computed(() => props.currentPage === 1);
 const isLastPage = computed(() => props.currentPage === props.lastPage);

@@ -4,7 +4,7 @@
       <UiInput placeholder="Search VIN" class="vehicle__input"></UiInput>
       <div class="vehicle__choice">
         <span>Select vehicles per page:</span>
-        <UiPagintaionChoice />
+        <UiPagintaionChoice :per-page="perPage" @on-per-page-change="changePerPage" />
       </div>
       <UiButton variant="primary">Add Vechicle</UiButton>
     </div>
@@ -24,7 +24,6 @@
         :current-page="store.cars.meta?.current_page"
         :last-page="store.cars.meta?.last_page"
         @on-page-change="changePage"
-        @on-per-page-change="changePerPage"
       />
     </div>
   </section>
@@ -46,9 +45,24 @@ const changePerPage = (value: number) => {
   perPage.value = value;
 };
 
-useAsyncData('my-cars', () => store.getVehicleData({ page: page.value, perPage: perPage.value }), {
-  watch: [page],
+const isPageMore = computed(() => {
+  if (store.cars.meta?.last_page && store.cars.meta?.current_page) {
+    return store.cars.meta.current_page > store.cars.meta.last_page;
+  }
 });
+
+useAsyncData('my-cars', () => store.getVehicleData({ page: page.value, perPage: perPage.value }), {
+  watch: [page, perPage],
+});
+
+watch(
+  () => isPageMore.value,
+  () => {
+    if (isPageMore.value) {
+      page.value = 1;
+    }
+  },
+);
 
 useHead({
   title: 'Vehcile',
@@ -77,6 +91,11 @@ definePageMeta({
   &__choice {
     display: flex;
     align-items: center;
+    gap: 16px;
+
+    line-height: 22px;
+
+    @include text-style(16px, 400, var(--text-black));
   }
 
   &__input {
