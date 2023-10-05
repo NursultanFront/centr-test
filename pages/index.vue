@@ -12,6 +12,7 @@
       <UiCarDetails />
       <UiCarDetails />
     </div>
+    <UiAvatar />
   </div>
 </template>
 
