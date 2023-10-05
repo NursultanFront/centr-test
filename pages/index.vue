@@ -1,14 +1,16 @@
 <template>
-  <div>
-    <UiLayoutHeader />
-  </div>
+  <section>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus quia, eligendi non ullam dicta itaque, quibusdam
+    aperiam saepe deleniti totam cumque! Facilis expedita neque aliquid labore repellendus perferendis aperiam ipsum?
+  </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+  title: 'Vehcile',
+});
 
-<style scoped lang="scss">
-.flex {
-  display: flex;
-  gap: 30px;
-}
-</style>
+definePageMeta({
+  layout: 'default',
+});
+</script>

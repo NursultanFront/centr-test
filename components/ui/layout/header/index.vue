@@ -41,6 +41,8 @@ const isVehiclePage = computed(() => {
   display: flex;
   justify-content: space-between;
 
+  border-bottom: 1px solid #e4e4e4;
+
   &__box {
     display: flex;
     align-items: center;

@@ -1,3 +1,7 @@
 <template>
-  <NuxtPage />
+  <NuxtLayout>
+    <Suspense>
+      <NuxtPage />
+    </Suspense>
+  </NuxtLayout>
 </template>

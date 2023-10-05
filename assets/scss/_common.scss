@@ -8,6 +8,7 @@ input,
 textarea,
 button {
   font-family: 'DM Sans', sans-serif;
+  background: var(--text-white, #fff);
 }
 
 html,
@@ -42,17 +43,19 @@ li {
   list-style: none;
 }
 
-// a,
-// .link {
-//   color: var(--vkd-black-900);
-//   font-size: px-to-rem(16px);
-//   font-weight: 800;
-//   text-decoration: underline;
+a,
+.link {
+  color: var(--text-white-45);
 
-//   &:visited {
-//     color: var(--vkd-black-500);
-//   }
-// }
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-decoration: none;
+
+  &:visited {
+    color: var(--text-white-45);
+  }
+}
 
 .w-100 {
   width: 100%;
