@@ -9,8 +9,8 @@
   </button>
 </template>
 <script setup lang="ts">
-type Variant = 'primary' | 'secondary' | 'dark' | 'transparent';
-type Size = 'large' | 'medium' | 'small' | 'extra_small' | 'borderless';
+type Variant = 'primary' | 'secondary';
+type Size = 'medium' | 'small';
 
 interface IProps {
   type?: HTMLButtonElement['type'];
@@ -33,89 +33,37 @@ const props = withDefaults(defineProps<IProps>(), {
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
   font-size: 18px;
-  border-radius: 4px;
+  border-radius: 10px;
   font-weight: 800;
 }
 
 .button_primary {
-  background-color: var(--vkd-turquoise-main);
-  color: var(--vkd-white-main);
+  background-color: var(--primary-red);
+  color: #fff;
+  box-shadow: 0px 8px 24px 0px rgba(217, 14, 50, 0.12);
 
   &:hover {
-    background-color: var(--vkd-turquoise-light);
-  }
-
-  &:active {
-    background-color: var(--vkd-turquoise-dark);
+    background-color: #de304e;
   }
 
   &:disabled {
-    background-color: var(--vkd-gray-700);
+    background-color: #de304e;
   }
 }
 
 .button_secondary {
-  background-color: var(--vkd-gray-500);
-  color: var(--vkd-blue-light);
-  font-weight: 600;
-
-  &:hover {
-    background-color: var(--vkd-blue-light);
-    color: var(--vkd-white-main);
-  }
-
-  &:active {
-    background-color: var(--vkd-blue-dark);
-    color: var(--vkd-white-main);
-  }
-
-  &:disabled {
-    background-color: var(--vkd-gray-500);
-    color: var(--vkd-gray-800);
-  }
-}
-
-.button_dark {
-  color: var(--vkd-white-main);
-  background-color: var(--vkd-black-800);
-  font-weight: 600;
-
-  &:hover {
-    background-color: var(--vkd-black-600);
-  }
-
-  &:active {
-    background-color: var(--vkd-black-700);
-  }
-
-  &:disabled {
-    color: var(--vkd-black-200);
-  }
-}
-
-.button_transparent {
-  color: var(--vkd-turquoise-main);
-  background-color: var(--vkd-white-main);
-  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--text-line-gray);
+  background-color: #fff;
 }
 
 .button_medium {
-  font-size: 16px;
-  padding: 10.5px 24px;
+  font-size: 14px;
+  padding: 12px 50px 12px 16px;
 }
 
 .button_small {
-  font-size: 14px;
-  padding: 8px 16px;
-}
-
-.button_extra-small {
-  font-size: 14px;
-  padding: 4px 8px;
-}
-
-.button_borderless {
-  padding: 0;
-  font-weight: 700;
+  font-size: 12px;
+  padding: 9px 18px;
 }
 </style>

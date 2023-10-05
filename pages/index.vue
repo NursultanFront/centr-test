@@ -6,6 +6,9 @@
       </template>
     </UiInput>
     <UiPagintaionChoice />
+    <UiButton size="medium">Клик</UiButton>
+    <UiButton variant="secondary" size="small">Клик</UiButton>
+    <UiAvailabilityInfo :count="30" :max="30" />
   </div>
 </template>
 
