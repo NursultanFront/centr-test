@@ -85,8 +85,6 @@ const onChangeValue = (value: number) => {
   display: flex;
 
   flex-direction: column;
-  gap: px-to-rem(10px);
-
   @include rounded-border(8px);
   border: 1px solid var(--text-line-gray, #e4e4e4);
 

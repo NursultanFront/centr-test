@@ -1,7 +1,12 @@
 <template>
   <section class="vehicle">
     <div class="vehicle__top-box">
-      <UiInput placeholder="Search VIN" class="vehicle__input"></UiInput>
+      <!-- <UiInput placeholder="Search VIN" class="vehicle__input">
+        <template #right-icon>
+          <ZoomIcon />
+        </template>
+      </UiInput> -->
+      <UiInputSearch :page="page" :per-page="perPage" />
       <div class="vehicle__choice">
         <span>Select vehicles per page:</span>
         <UiPagintaionChoice :per-page="perPage" @on-per-page-change="changePerPage" />
@@ -19,7 +24,7 @@
       />
     </div>
     <div class="vehicle__bottom-box">
-      <div class="vehicle__count">Showing {{ store.cars.meta?.per_page }} out of {{ store.cars.meta?.total }}</div>
+      <div class="vehicle__count">Showing {{ showCountCars }} out of {{ store.cars.meta?.total }}</div>
       <UiPagination
         :current-page="store.cars.meta?.current_page"
         :last-page="store.cars.meta?.last_page"
@@ -46,9 +51,19 @@ const changePerPage = (value: number) => {
 };
 
 const isPageMore = computed(() => {
-  if (store.cars.meta?.last_page && store.cars.meta?.current_page) {
-    return store.cars.meta.current_page > store.cars.meta.last_page;
+  return store.cars.meta?.last_page && store.cars.meta?.current_page
+    ? store.cars.meta.current_page > store.cars.meta.last_page
+    : false;
+});
+
+const showCountCars = computed(() => {
+  const perPageNumber = Number(store.cars.meta?.per_page);
+  const total = store.cars.meta?.total;
+
+  if (total !== undefined && perPageNumber > total) {
+    return total;
   }
+  return perPageNumber;
 });
 
 useAsyncData('my-cars', () => store.getVehicleData({ page: page.value, perPage: perPage.value }), {
