@@ -220,13 +220,14 @@ const onChange = (event: Event) => props.modelModifiers.lazy && handleChangeEven
   outline: none;
   width: 100%;
 
-  color: var(--vkd-black-900);
-  font-size: px-to-rem(18px);
-  font-weight: 500;
+  font-size: px-to-rem(16px);
+  font-weight: 400;
   text-align: inherit;
 
+  color: var(--text-black);
+
   &::placeholder {
-    color: var(--vkd-black-100);
+    color: var(--text-light-grey);
   }
 
   &__right-icon {

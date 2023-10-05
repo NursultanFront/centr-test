@@ -13,5 +13,9 @@
 <style lang="scss" scoped>
 .layout {
   display: flex;
+
+  &__content {
+    flex-grow: 1;
+  }
 }
 </style>
