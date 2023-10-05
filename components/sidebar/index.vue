@@ -25,10 +25,8 @@ const isSelected = (path: string) => route.path === path;
 .aside {
   position: relative;
   @include padding(30px, 0);
-  height: 100vh;
+  height: 100%;
   background: var(--primary-dark);
-
-  width: 256px;
 
   &__title {
     margin-bottom: 102px;

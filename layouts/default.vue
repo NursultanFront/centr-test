@@ -12,10 +12,7 @@
 
 <style lang="scss" scoped>
 .layout {
-  display: flex;
-
-  &__content {
-    flex-grow: 1;
-  }
+  display: grid;
+  grid-template-columns: 268px auto;
 }
 </style>

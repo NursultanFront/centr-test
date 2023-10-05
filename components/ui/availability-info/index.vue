@@ -16,7 +16,9 @@ interface IProps {
   max: number;
 }
 
-const props = defineProps<IProps>();
+const props = withDefaults(defineProps<IProps>(), {
+  max: 30,
+});
 
 const isFullAviable = computed(() => {
   return props.count === props.max;

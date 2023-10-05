@@ -8,6 +8,16 @@
       </div>
       <UiButton variant="primary">Add Vechicle</UiButton>
     </div>
+    <div class="vehicle__list">
+      <UiCarDetails
+        v-for="item in store.cars.data"
+        :key="item.id"
+        :brand="item.brand"
+        :count="item.angles_count"
+        :image="item.placeholder"
+        :model="item.brand"
+      />
+    </div>
     <div class="vehicle__bottom-box">
       <div class="vehicle__count">Showing 9 out of 256</div>
       <UiPagination />
@@ -16,7 +26,11 @@
 </template>
 
 <script setup lang="ts">
-// const { data: apartmentList } = useAsyncData('myApartmentsPromos', () => apartmentStore.getApartmentList());
+import { useCarsStore } from '@/stores/cars';
+
+const store = useCarsStore();
+
+useAsyncData('my-cars', () => store.getVehicleData({ page: 1, perPage: 9 }));
 
 useHead({
   title: 'Vehcile',
@@ -49,6 +63,12 @@ definePageMeta({
 
   &__input {
     width: 322px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
   }
 
   &__bottom-box {
