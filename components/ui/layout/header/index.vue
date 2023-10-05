@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header__box">
       <div class="header__name">{{ headerText }}</div>
-      <div v-if="isVehiclePage" class="header__count">256</div>
+      <div v-if="isVehiclePage" class="header__count">{{ store.cars.meta?.total }}</div>
     </div>
     <div class="header__content">
       <UiButton variant="secondary" size="square">
@@ -16,6 +16,9 @@
 
 <script setup lang="ts">
 import PlusIcon from '@/assets/images/svg/plus.svg?component';
+import { useCarsStore } from '@/stores/cars';
+
+const store = useCarsStore();
 const route = useRoute();
 
 const headerTextMappings = {

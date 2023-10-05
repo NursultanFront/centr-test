@@ -14,5 +14,6 @@
 .layout {
   display: grid;
   grid-template-columns: 268px auto;
+  height: inherit;
 }
 </style>

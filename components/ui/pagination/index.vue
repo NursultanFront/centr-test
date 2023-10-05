@@ -5,9 +5,9 @@
         <ArrowLeftIcon class="navigation__icon" />
       </button>
       <div class="page">
-        <div class="page__number">100</div>
+        <div class="page__number">{{ props.currentPage }}</div>
         <div class="page__separator">of</div>
-        <div class="page__number">6</div>
+        <div class="page__number">{{ props.lastPage }}</div>
       </div>
       <button class="pagination__button" variant="secondary" :disabled="isLastPage" @click="goForward">
         <ArrowRightIcon class="navigation__icon" />

@@ -10,12 +10,11 @@ button {
   font-family: 'DM Sans', sans-serif;
 }
 
-// html,
-// body,
-// #__nuxt,
-// .layout {
-//   height: 100vh;
-// }
+html,
+body,
+#__nuxt {
+  height: 100vh;
+}
 
 html,
 body {

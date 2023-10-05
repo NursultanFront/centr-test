@@ -1,7 +1,13 @@
 <template>
-  <div></div>
+  <h1>There is nothing here</h1>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+  title: 'Settings',
+});
 
-<style scoped></style>
+definePageMeta({
+  layout: 'default',
+});
+</script>

@@ -19,8 +19,13 @@
       />
     </div>
     <div class="vehicle__bottom-box">
-      <div class="vehicle__count">Showing 9 out of 256</div>
-      <UiPagination />
+      <div class="vehicle__count">Showing {{ store.cars.meta?.per_page }} out of {{ store.cars.meta?.total }}</div>
+      <UiPagination
+        :current-page="store.cars.meta?.current_page"
+        :last-page="store.cars.meta?.last_page"
+        @on-page-change="changePage"
+        @on-per-page-change="changePerPage"
+      />
     </div>
   </section>
 </template>
@@ -30,7 +35,20 @@ import { useCarsStore } from '@/stores/cars';
 
 const store = useCarsStore();
 
-useAsyncData('my-cars', () => store.getVehicleData({ page: 1, perPage: 9 }));
+const page = ref<number>(1);
+const perPage = ref<number>(9);
+
+const changePage = (value: number) => {
+  page.value = value;
+};
+
+const changePerPage = (value: number) => {
+  perPage.value = value;
+};
+
+useAsyncData('my-cars', () => store.getVehicleData({ page: page.value, perPage: perPage.value }), {
+  watch: [page],
+});
 
 useHead({
   title: 'Vehcile',

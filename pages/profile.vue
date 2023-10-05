@@ -1,10 +1,13 @@
 <template>
-  <div><UiLayoutHeader /></div>
+  <h1>There is nothing here</h1>
 </template>
 
 <script setup lang="ts">
-const route = useRoute();
-console.log(route.name);
-</script>
+useHead({
+  title: 'Profile',
+});
 
-<style scoped></style>
+definePageMeta({
+  layout: 'default',
+});
+</script>
