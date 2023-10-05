@@ -9,8 +9,8 @@
   </button>
 </template>
 <script setup lang="ts">
-type Variant = 'primary' | 'secondary';
-type Size = 'medium' | 'small';
+type Variant = 'primary' | 'secondary' | 'light';
+type Size = 'medium' | 'small' | 'square';
 
 interface IProps {
   type?: HTMLButtonElement['type'];
@@ -27,6 +27,7 @@ const props = withDefaults(defineProps<IProps>(), {
 </script>
 <style lang="scss">
 .button {
+  display: flex;
   border: 0;
   padding: 13.5px 32px;
   transition-property: background-color, color;
@@ -52,6 +53,26 @@ const props = withDefaults(defineProps<IProps>(), {
 }
 
 .button_secondary {
+  border-radius: 10px;
+  @include border(1px, var(--secondary-light-red));
+  background-color: #fff;
+
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--secondary-light-red);
+
+  &:hover {
+    @include border(1px, var(--primary-red));
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: var(--primary-red);
+  }
+}
+
+.button_light {
   border-radius: 6px;
   border: 1px solid var(--text-line-gray);
   background-color: #fff;
@@ -59,11 +80,15 @@ const props = withDefaults(defineProps<IProps>(), {
 
 .button_medium {
   font-size: 14px;
-  padding: 12px 50px 12px 16px;
+  padding: 12px 16px 12px 16px;
 }
 
 .button_small {
   font-size: 12px;
   padding: 9px 18px;
+}
+
+.button_square {
+  padding: 9px;
 }
 </style>
