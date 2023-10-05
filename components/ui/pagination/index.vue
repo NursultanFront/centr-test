@@ -1,44 +1,23 @@
 <template>
   <div class="pagination">
     <div class="navigation">
-      <UiButton class="pagination__button" variant="secondary" :disabled="isFirstPage" @click="goBack">
+      <button class="pagination__button" variant="secondary" :disabled="isFirstPage" @click="goBack">
         <ArrowLeftIcon class="navigation__icon" />
-      </UiButton>
-      <div class="page-list">
-        <UiButton
-          v-for="page in pageList"
-          :key="page"
-          class="pagination__button"
-          :variant="getPageVariant(page)"
-          @click="changePage(page)"
-          >{{ page }}</UiButton
-        >
+      </button>
+      <div class="page">
+        <div class="page__number">100</div>
+        <div class="page__separator">of</div>
+        <div class="page__number">6</div>
       </div>
-      <UiButton class="pagination__button" variant="secondary" :disabled="isLastPage" @click="goForward">
-        <ArrowLeftIcon class="navigation__icon navigation__icon_right" />
-      </UiButton>
-    </div>
-    <div class="per-page">
-      <div class="per-page__label">Показать на странице:</div>
-      <div class="per-page__variants">
-        <UiButton
-          v-for="option in props.perPageList"
-          :key="option"
-          class="pagination__button per-page__item"
-          :variant="getPerPageVariant(option)"
-          @click="changePerPage(option)"
-          >{{ option }}</UiButton
-        >
-      </div>
+      <button class="pagination__button" variant="secondary" :disabled="isLastPage" @click="goForward">
+        <ArrowRightIcon class="navigation__icon" />
+      </button>
     </div>
   </div>
 </template>
-<script lang="ts">
-import ArrowLeftIcon from '@/assets/images/svg/icons/chevron-left.svg';
-
-const PerPage: number[] = [10, 50, 100];
-</script>
 <script setup lang="ts">
+import ArrowLeftIcon from '@/assets/images/svg/chevron_left.svg?component';
+import ArrowRightIcon from '@/assets/images/svg/chevron_right.svg?component';
 interface IProps {
   perPageList?: number[];
   currentPage: number;
@@ -47,7 +26,6 @@ interface IProps {
 }
 
 const props = withDefaults(defineProps<IProps>(), {
-  perPageList: () => PerPage,
   perPage: 10,
   currentPage: 1,
   lastPage: 1,
@@ -103,16 +81,18 @@ const isLastPage = computed(() => props.currentPage === props.lastPage);
 .pagination {
   display: flex;
   align-items: center;
-  gap: px-to-rem(25px);
+  gap: px-to-rem(12px);
 
   &__button {
     padding: 0;
-    width: px-to-rem(48px);
-    height: px-to-rem(48px);
+
+    background: transparent;
+    border: 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 }
 
@@ -133,7 +113,8 @@ const isLastPage = computed(() => props.currentPage === props.lastPage);
 
 .navigation {
   display: flex;
-  gap: px-to-rem(25px);
+  align-items: center;
+  gap: px-to-rem(12px);
 
   &__icon {
     width: px-to-rem(24px);
@@ -145,8 +126,31 @@ const isLastPage = computed(() => props.currentPage === props.lastPage);
   }
 }
 
-.page-list {
+.page {
   display: flex;
-  gap: px-to-rem(10px);
+  align-items: center;
+  gap: px-to-rem(12px);
+
+  &__separator {
+    color: var(--text-dark-grey, rgba(41, 49, 72, 0.8));
+    text-align: center;
+    font-family: DM Sans;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 184.615% */
+  }
+  &__number {
+    @include padding(5px, 6px);
+
+    @include border(1px, var(--text-line-gray));
+    @include rounded-border(6px);
+    text-align: center;
+
+    min-width: 32px;
+    height: 32px;
+
+    @include text-style(15px, 400, var(--text-dark-grey));
+  }
 }
 </style>

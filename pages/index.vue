@@ -14,6 +14,7 @@
     </div>
     <UiAvatar />
     <UiChoiceLang />
+    <UiPagination />
   </div>
 </template>
 
