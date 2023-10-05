@@ -182,8 +182,7 @@ const onChange = (event: Event) => props.modelModifiers.lazy && handleChangeEven
   font-size: 18px;
   font-weight: 500;
   position: relative;
-  background-color: $white-main;
-
+  background-color: #fff;
   @include transition(color border-color);
   @include border(1px, var(--text-line-gray));
   @include rounded-border(10px);

@@ -1,43 +1,5 @@
 $themes: (
   dark: (
-    black-main: #000000,
-    black-main-a25: rgba(0, 0, 0, 0.25),
-    black-900: #39393a,
-    black-800: #4a4a4a,
-    black-700: #575757,
-    black-600: #686868,
-    black-500: #777777,
-    black-200: #8c8c8c,
-    black-100: #afafaf,
-
-    gray-900: #cfcfcf,
-    gray-800: #e1e1e1,
-    gray-700: #ebebeb,
-    gray-600: #f3f3f3,
-    gray-500: #f8f8f8,
-    gray-400: #fcfcfc,
-
-    // original name: white
-    white-main: #ffffff,
-    white-alpha-5: rgba(255, 255, 255, 0.05),
-    turquoise-main: #16697a,
-    turquoise-dark: #0a5868,
-    turquoise-light: #117e95,
-
-    blue-dark: #3193b2,
-    blue-light: #56b4d1,
-
-    // original name: pink
-    pink-main: #ff8585,
-    // original name: orange
-    orange-main: #fca522,
-    // original name: yellow
-    yellow-main: #ffc700,
-    yellow-light: #ffd362,
-    // original name: green
-    green-main: #52b788,
-    green-light: #68d0a0,
-
     // primary
     primary-red: #d90e32,
     primary-dark-red: #a60933,
@@ -62,42 +24,26 @@ $themes: (
   // TODO: light theme colors
   light:
     (
-      black-main: #000000,
-      black-900: #39393a,
-      black-800: #4a4a4a,
-      black-700: #575757,
-      black-600: #686868,
-      black-500: #777777,
-      black-200: #8c8c8c,
-      black-100: #afafaf,
+      // primary
+      primary-red: #d90e32,
+      primary-dark-red: #a60933,
+      primary-dark: #282828,
+      primary-light-grey: #f3f6f8,
 
-      gray-900: #cfcfcf,
-      gray-800: #e1e1e1,
-      gray-700: #ebebeb,
-      gray-600: #f3f3f3,
-      gray-500: #f8f8f8,
-      gray-400: #fcfcfc,
-
-      // original name: white
-      white-main: #ffffff,
-
-      turquoise-main: #16697a,
-      turquoise-dark: #0a5868,
-      turquoise-light: #117e95,
-
-      blue-dark: #3193b2,
-      blue-light: #56b4d1,
-
-      // original name: pink
-      pink-main: #ff8585,
-      // original name: orange
-      orange-main: #fca522,
-      // original name: yellow
-      yellow-main: #ffc700,
-      yellow-light: #ffd362,
-      // original name: green
-      green-main: #52b788,
-      green-light: #68d0a0,
+      // text-black
+      text-black: #293148,
+      text-dark-grey: rgba(41, 49, 72, 0.8),
+      text-grey: rgba(41, 49, 72, 0.6),
+      text-light-grey: rgba(41, 49, 72, 0.45),
+      text-line-gray: #e4e4e4,
+      text-white-45: rgba(255, 255, 255, 0.45),
+      text-white-20: rgba(255, 255, 255, 0.2),
+      // secondary
+      secondary-dark-red: #59051c,
+      secondary-light-red: #e86e84,
+      secondary-blue: #7895ff,
+      secondary-green: #7fc75e,
+      secondary-grey: #ededed,
     ),
 );
 
@@ -110,36 +56,3 @@ $themes: (
 :root {
   @include spread-theme-variables('dark');
 }
-
-$black-main: var(--vkd-black-main);
-$black-main-a25: var(--vkd-black-main-a25);
-$black-900: var(--vkd-black-900);
-$black-800: var(--vkd-black-800);
-$black-700: var(--vkd-black-700);
-$black-600: var(--vkd-black-600);
-$black-500: var(--vkd-black-500);
-$black-200: var(--vkd-black-200);
-$black-100: var(--vkd-black-100);
-
-$gray-900: var(--vkd-gray-900);
-$gray-800: var(--vkd-gray-800);
-$gray-700: var(--vkd-gray-700);
-$gray-600: var(--vkd-gray-600);
-$gray-500: var(--vkd-gray-500);
-$gray-400: var(--vkd-gray-400);
-
-$white-main: var(--vkd-white-main);
-$white-alpha-5: var(--vkd-white-alpha-5);
-$turquoise-main: var(--vkd-turquoise-main);
-$turquoise-dark: var(--vkd-turquoise-dark);
-$turquoise-light: var(--vkd-turquoise-light);
-
-$blue-dark: var(--vkd-blue-dark);
-$blue-light: var(--vkd-blue-light);
-
-$pink-main: var(--vkd-pink-main);
-$orange-main: var(--vkd-orange-main);
-$yellow-main: var(--vkd-yellow-main);
-$yellow-light: var(--vkd-yellow-light);
-$green-main: var(--vkd-green-main);
-$green-light: var(--vkd-green-light);
