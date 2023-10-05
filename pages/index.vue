@@ -8,7 +8,10 @@
     <UiPagintaionChoice />
     <UiButton size="medium">Клик</UiButton>
     <UiButton variant="secondary" size="small">Клик</UiButton>
-    <UiAvailabilityInfo :count="30" :max="30" />
+    <div class="flex">
+      <UiCarDetails />
+      <UiCarDetails />
+    </div>
   </div>
 </template>
 
@@ -16,3 +19,10 @@
 import SearchIcon from '@/assets/images/svg/zoom.svg?component';
 const inputValue = ref<string>('');
 </script>
+
+<style scoped lang="scss">
+.flex {
+  display: flex;
+  gap: 30px;
+}
+</style>
