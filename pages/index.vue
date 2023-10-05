@@ -1,11 +1,6 @@
 <template>
   <section class="vehicle">
     <div class="vehicle__top-box">
-      <!-- <UiInput placeholder="Search VIN" class="vehicle__input">
-        <template #right-icon>
-          <ZoomIcon />
-        </template>
-      </UiInput> -->
       <UiInputSearch :page="page" :per-page="perPage" />
       <div class="vehicle__choice">
         <span>Select vehicles per page:</span>
@@ -14,14 +9,16 @@
       <UiButton variant="primary">Add Vechicle</UiButton>
     </div>
     <div class="vehicle__list">
-      <UiCarDetails
-        v-for="item in store.cars.data"
-        :key="item.id"
-        :brand="item.brand"
-        :count="item.angles_count"
-        :image="item.placeholder"
-        :model="item.brand"
-      />
+      <template v-for="item in store.cars.data" :key="item.id">
+        <UiCarDetails
+          v-if="store.cars.data.length > 0"
+          :brand="item.brand"
+          :count="item.angles_count"
+          :image="item.placeholder"
+          :model="item.brand"
+        />
+      </template>
+      <h2 v-if="store.cars.data.length === 0" class="">Nothing found</h2>
     </div>
     <div class="vehicle__bottom-box">
       <div class="vehicle__count">Showing {{ showCountCars }} out of {{ store.cars.meta?.total }}</div>
