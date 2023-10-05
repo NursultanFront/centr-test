@@ -36,13 +36,6 @@
           />
           <EyeIcon v-else class="input__right-icon input__right-icon_clear" @click="onTogglePasswordVisibility" />
         </template>
-        <RemoveIcon
-          v-else-if="isCleanIconVisible"
-          width="24"
-          height="24"
-          class="input__right-icon input__right-icon_clear"
-          @click="onClear"
-        />
       </slot>
     </div>
     <slot name="tip">
