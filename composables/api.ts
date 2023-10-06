@@ -2,7 +2,6 @@ import { $fetch, FetchOptions } from 'ofetch';
 
 export const useFetchAPI = <T>(request: RequestInfo, opts?: FetchOptions<'json'>) => {
   const config = useRuntimeConfig();
-
   return $fetch<T>(request, {
     baseURL: `${config.public.apiBase}/api`,
     ...opts,
