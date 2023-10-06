@@ -8,6 +8,10 @@ pnpm install
 
 pnpm run dev
 
+## Env файл
+
+В файле .env.example лежит api, просто удалите .example и оставть .env просто
+
 ## Стэк
 
 - Nuxt 3
