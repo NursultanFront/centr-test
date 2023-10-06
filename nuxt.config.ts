@@ -3,6 +3,10 @@ import SvgLoader from 'vite-svg-loader';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  app: {
+    baseURL: '/center-test-nursultan/',
+    buildAssetsDir: 'assets',
+  },
   vite: {
     plugins: [
       SvgLoader({
